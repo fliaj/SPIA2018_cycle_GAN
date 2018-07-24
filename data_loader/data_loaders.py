@@ -29,7 +29,7 @@ class SketchDataLoader(BaseDataLoader):
             # transforms.Resize(128),
             transforms.ToTensor(),
         ])
-        self.dataset = ImageFolder(os.path.join(data_dir, 'aligned/sketch'), transform=trsfm)
+        self.dataset = ImageFolder(os.path.join(data_dir, 'sketch_images/sketch'), transform=trsfm)
         super(SketchDataLoader, self).__init__(self.dataset, self.batch_size, shuffle, validation_split, validation_fold, num_workers,)
 
 
@@ -56,7 +56,7 @@ class CelebADataLoader(BaseDataLoader):
             transforms.ToTensor(),
         ])
 
-        self.dataset = ImageFolder(os.path.join(data_dir, 'aligned/picture'), transform=trsfm)
+        self.dataset = ImageFolder(os.path.join(data_dir, 'sketch_images/human'), transform=trsfm)
         super(CelebADataLoader, self).__init__(self.dataset, self.batch_size, shuffle, validation_split, validation_fold, num_workers)
 
 
@@ -109,9 +109,9 @@ def gen_wrapper(loader):
         yield data
 
 def concat_loader(batch_size=8):
-    skc_loader = SketchDataLoader('../data', batch_size) 
+    skc_loader = SketchDataLoader('./data', batch_size)
     # lfw_loader = LfwDataLoader('../data/lfw', batch_size)
-    celeba_loader = CelebADataLoader('../data', batch_size)
+    celeba_loader = CelebADataLoader('./data', batch_size)
     s_gen = gen_wrapper(skc_loader)
     l_gen = gen_wrapper(celeba_loader)
 
@@ -156,7 +156,7 @@ if __name__ == '__main__':
     # skc_end = False
     # lfw_end = False
 
-    loader = CelebADataLoader('../data', 32)
+    loader = CelebADataLoader('./data', 32)
     # print(type(skc_loader))
     # print(len(skc_loader))
     # data, target = skc_loader

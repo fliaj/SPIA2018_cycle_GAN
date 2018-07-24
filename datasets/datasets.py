@@ -63,7 +63,7 @@ class CocoWrapper(torchvision.datasets.CocoCaptions):
 
 
 if __name__ == '__main__':
-    dset = ImageFolder('../data/lfw')
+    # dset = ImageFolder('./data/lfw')
     # dset = ImageFolder('../data/sketch_images')
     index = 110
     # for index, data in enumerate(dset):
