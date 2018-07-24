@@ -144,7 +144,7 @@ class Unet(nn.Module):
         x = self.bottleneck(x)
 
         for up_block in self.decoder.children():
-            x = torch.cat([skip.pop(), x], dim=1)
+            x = torch.cat([skip.pop(), x], dim=2)
             x = up_block(x)
 
         x = self.output(x)
