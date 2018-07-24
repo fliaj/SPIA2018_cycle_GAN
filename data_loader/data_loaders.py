@@ -29,7 +29,7 @@ class SketchDataLoader(BaseDataLoader):
             # transforms.Resize(128),
             transforms.ToTensor(),
         ])
-        self.dataset = ImageFolder(os.path.join(data_dir, 'sketch_images/'), transform=trsfm)
+        self.dataset = ImageFolder(os.path.join(data_dir, 'sketch_images/sketch/'), transform=trsfm)
         super(SketchDataLoader, self).__init__(self.dataset, self.batch_size, shuffle, validation_split, validation_fold, num_workers,)
 
 
