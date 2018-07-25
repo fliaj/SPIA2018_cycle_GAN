@@ -135,6 +135,7 @@ class Unet(nn.Module):
 
 
     def forward(self, x):
+        print(x.shape)
         skip = []
         for down_block in self.encoder.children():
             x = down_block(x)
