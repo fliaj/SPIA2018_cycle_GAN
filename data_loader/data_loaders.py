@@ -25,7 +25,8 @@ class SketchDataLoader(BaseDataLoader):
             transforms.Grayscale(),
             # normalize_sizes,
             # transforms.Pad(50, padding_mode='edge'),
-            # transforms.CenterCrop(256),
+            transforms.CenterCrop(128),
+
             # transforms.Resize(128),
             transforms.ToTensor(),
         ])
@@ -51,8 +52,8 @@ class CelebADataLoader(BaseDataLoader):
     def __init__(self, data_dir, batch_size, validation_split=0.0, validation_fold=0, shuffle=True, num_workers=4):
         self.batch_size = batch_size
         trsfm = transforms.Compose([
-            # transforms.CenterCrop(256),
-            # transforms.Resize(128),
+            transforms.CenterCrop(256),
+            transforms.Resize(128),
             transforms.ToTensor(),
         ])
 
